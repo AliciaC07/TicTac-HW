@@ -26,14 +26,14 @@ public class TicTacToeClient {
     private PrintWriter output;
 
     private final Font largerFont = new Font("Verdana", Font.BOLD, 95);
-
+    ///Se establece la conexion con el servidor
     public void generateConnection(String serverAddress) throws IOException {
         socket = new Socket(serverAddress, PORT);
         input = new BufferedReader(new InputStreamReader(
                 socket.getInputStream()));
         output = new PrintWriter(socket.getOutputStream(), true);
     }
-
+    //Se genera el tablero del cliente
     public void generateBoard() {
         messageLabel.setBackground(Color.lightGray);
         frame.getContentPane().add(messageLabel, "South");
@@ -69,7 +69,7 @@ public class TicTacToeClient {
            response = input.readLine();
 
            if (response.startsWith("VALID_MOVE")) {
-               messageLabel.setText("Valid move, please wait");
+               messageLabel.setText("It's not your turn, please wait");
                currentPiece.setBackground(playerColor);
                currentPiece.label.setFont(largerFont);
                currentPiece.label.setText(playerMark);

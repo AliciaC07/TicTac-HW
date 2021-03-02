@@ -8,7 +8,7 @@ public class TicTacToeServer {
 
     public static void main(String[] args) throws Exception {
         ServerSocket listener = new ServerSocket(8001);
-        System.out.println("Tic Tac Toe Server is Running");
+        System.out.println("Tic Tac Toe Server is Up");
         try {
             while (true) {
                 Game game = new Game();
@@ -86,7 +86,7 @@ class Game {
                         new InputStreamReader(socket.getInputStream()));
                 output = new PrintWriter(socket.getOutputStream(), true);
                 output.println("WELCOME " + mark);
-                output.println("MESSAGE Waiting for opponent to connect");
+                output.println("MESSAGE Waiting for other opponent to connect");
             } catch (IOException e) {
                 System.out.println("A player disconnected: " + e);
             }
